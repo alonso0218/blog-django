@@ -29,14 +29,14 @@ def nosotros(request):
     queryset = request.GET.get("buscar")
     posts= Post.objects.filter(
         estado=True,
-        Categoria=Categoria.objects.get(nombre__iexatc='nosotros')
+        categoria=Categoria.objects.get(nombre__iexact='nosotros')
     )
     if queryset:
        posts= Post.objects.filter( 
             Q(titulo__icontains = queryset) |
             Q(descripcion__icontains = queryset),
               estado=True,
-              categoria=Categoria.objects.get(nombre__iexatc="nosotros"),
+              categoria=Categoria.objects.get(nombre__iexact="nosotros"),
         ).distinct()
 
     paginator=Paginator(posts,2) 
@@ -50,14 +50,14 @@ def programacion(request):
     queryset = request.GET.get("buscar")
     posts= Post.objects.filter(
       estado=True ,
-      Categoria=Categoria.objects.get(nombre='programacion')
+      categoria=Categoria.objects.get(nombre='programacion')
     )
     if queryset:
        posts= Post.objects.filter( 
             Q(titulo__icontains = queryset) |
             Q(descripcion__icontains = queryset),
               estado=True,
-              categoria=Categoria.objects.get(nombre__iexatc="programacion"),
+              categoria=Categoria.objects.get(nombre__iexact="programacion"),
         ).distinct()
     paginator=Paginator(posts,2) 
     page=request.GET.get("page")
@@ -70,14 +70,14 @@ def tegnologia(request):
     queryset = request.GET.get("buscar")
     posts= Post.objects.filter(
       estado=True ,
-      Categoria=Categoria.objects.get(nombre='tegnologia')
+      categoria=Categoria.objects.get(nombre='tegnologia')
     )
     if queryset:
        posts= Post.objects.filter( 
             Q(titulo__icontains = queryset) |
             Q(descripcion__icontains = queryset),
               estado=True,
-              categoria=Categoria.objects.get(nombre__iexatc="tegnologia"),
+              categoria=Categoria.objects.get(nombre__iexact="tegnologia"),
         ).distinct()
     paginator=Paginator(posts,2) 
     page=request.GET.get("page")
@@ -90,14 +90,14 @@ def video_juegos(request):
     queryset=request.GET.get("buscar")
     posts= Post.objects.filter(
       estado=True ,
-      Categoria=Categoria.objects.get(nombre='video juegos')
+      categoria=Categoria.objects.get(nombre='video juegos')
     )
     if queryset:
        posts= Post.objects.filter( 
             Q(titulo__icontains = queryset) |
             Q(descripcion__icontains = queryset),
               estado=True,
-              categoria=Categoria.objects.get(nombre__iexatc="video juegos"),
+              categoria=Categoria.objects.get(nombre__iexact="video juegos"),
         ).distinct()
     paginator=Paginator(posts,2) 
     page=request.GET.get("page")
